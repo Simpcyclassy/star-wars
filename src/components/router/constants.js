@@ -1,6 +1,7 @@
 /** @constant */
 export const PATHS = {
     PLANETS: '/planets',
+    PEOPLE: '/people',
     HOME: '/',
 };
 

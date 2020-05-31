@@ -1,19 +1,19 @@
 import { Avatar, Card, Descriptions, List } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { requestPlanets } from "../actions";
+import { requestCharacter } from "../actions";
 import { IMAGES } from "../constants";
 
 const { Meta } = Card;
 let randomImage = IMAGES[Math.floor(Math.random() * IMAGES.length)];
 
-const Planets = () => {
+const People = () => {
   const dispatch = useDispatch();
 
-  const { planets } = useSelector((state) => state.planets);
+  const { characters } = useSelector((state) => state.people);
 
   useEffect(() => {
-    dispatch(requestPlanets());
+    dispatch(requestCharacter());
   }, [dispatch]);
 
   return (
@@ -27,24 +27,21 @@ const Planets = () => {
           },
           pageSize: 2,
         }}
-        dataSource={planets}
+        dataSource={characters}
         renderItem={(item) => (
           <List.Item>
             <Card
               hoverable
-              // style={{
-              //   width: 500
-              // }}
               cover={<img alt="planets" src={randomImage} />}
             >
               <Meta avatar={<Avatar src={randomImage} />} title={item.name} />
 
               <Descriptions bordered layout="vertical">
-                <Descriptions.Item label="Population">
-                  {item.population}
+                <Descriptions.Item label="Birth year">
+                  {item.birth_year}
                 </Descriptions.Item>
-                <Descriptions.Item label="Climate">
-                  {item.climate}
+                <Descriptions.Item label="Gender">
+                  {item.gender}
                 </Descriptions.Item>
               </Descriptions>
             </Card>
@@ -56,4 +53,4 @@ const Planets = () => {
   );
 };
 
-export default Planets;
+export default People;
