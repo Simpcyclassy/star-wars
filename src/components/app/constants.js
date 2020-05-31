@@ -1,2 +1,8 @@
 /** @constant */
-export const NAV_TEST = 'Whatever this is, just show the f**king text';
+export const PEOPLE = 'People';
+
+/** @constant */
+export const PLANETS = 'Planets';
+
+/** @constant */
+export const STARSHIPS = 'Starships';

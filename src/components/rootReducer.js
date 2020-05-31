@@ -1,10 +1,19 @@
-const reducer = (state = { foo: "" }, action) => {
-  switch (action.type) {
-    case "FOO":
-      return { ...state, foo: action.payload };
-    default:
-      return state;
-  }
+// import { combineReducers } from 'redux';
+
+// import planets from './planets';
+
+// export default combineReducers({
+//     planets: planets.reducers,
+// });
+
+import { combineReducers } from 'redux';
+
+import planets from './planets';
+
+const { reducers: planetsReducer } = planets;
+
+const rootReducers = {
+    planets: planetsReducer,
 };
 
-export default reducer;
+export default combineReducers(rootReducers);

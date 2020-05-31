@@ -1,2 +1,2 @@
 /** @constant */
-export const TEST = 'Let\'s just pretend it is some planet thing';
+export const PLANETS_URL = 'https://swapi.dev/api/planets/';
