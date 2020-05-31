@@ -13,7 +13,8 @@ function* requestAllPlanets() {
     try {
         yield put(loadPlanets());
         const res = yield call(allPlanets);
-        if (res.status === 'success') {
+        console.log(res);
+        if (res) {
             yield put(updatePlanets(res.results));
         } 
     } catch (error) {

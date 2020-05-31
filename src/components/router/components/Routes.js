@@ -21,7 +21,7 @@ const Routes = () => (
                         path={PLANETS}
                         exact
                         strict
-                        component={planets.components.PLANETS}
+                        component={planets.components.Planets}
                     />
                     <Route component={NoMatch} />
                 </Switch>
