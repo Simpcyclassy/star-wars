@@ -13,7 +13,6 @@ function* requestAllPlanets() {
     try {
         yield put(loadPlanets());
         const res = yield call(allPlanets);
-        console.log(res);
         if (res) {
             yield put(updatePlanets(res.results));
         } 
@@ -30,6 +29,6 @@ function* requestAllPlanets() {
  * @return {void}
  */
 
-export default function* watchRequestAllPlanetss() {
+export default function* watchRequestAllPlanets() {
     yield takeLatest(REQUEST_PLANETS, requestAllPlanets);
 }

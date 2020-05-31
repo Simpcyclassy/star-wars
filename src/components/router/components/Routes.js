@@ -7,9 +7,10 @@ import history from '../../history';
 import { PATHS } from '../constants';
 
 import planets from '../../planets';
+import people from '../../people';
 import app from '../../app';
 
-const { PLANETS } = PATHS;
+const { PLANETS,PEOPLE } = PATHS;
 const { App } = app.components;
 
 const Routes = () => (
@@ -23,6 +24,14 @@ const Routes = () => (
                         strict
                         component={planets.components.Planets}
                     />
+                    <Route
+                        path={PEOPLE}
+                        exact
+                        strict
+                        component={people.components.People}
+                    />
+                    <Route component={NoMatch} />
+
                     <Route component={NoMatch} />
                 </Switch>
             </App>
