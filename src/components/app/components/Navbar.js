@@ -54,7 +54,7 @@ const Navbar = () => {
     <Header className="main-nav">
       <div className="left-menu">
         <AppLink to={'/'}>
-          <img src={Logo} width="25%" height="25%" alt="NeoNatar Logo" />
+          <img src={Logo} className="swapi-logo" alt="Star wars Logo" />
         </AppLink>
       </div>
       <Menu className="right-nav" mode="horizontal">

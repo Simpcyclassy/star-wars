@@ -2,27 +2,41 @@
     background: url(../../../assets/hero-banner.jpg) no-repeat center center;
     background-size: cover;
     height: 500px;
-}
+    .left-menu {
+        position: relative;
+        float: left;
+        top: 10%;
+        margin-left: 20px;
+        transform: translateY(-50%);
+        .swapi-logo {
+            width: 25%;
+            height: 25%;
+            @media screen and (max-width: 600px) {
+                width: 50%;
+                height: 50%;
+            }
+        
+        };
+    }
+    .right-nav {
+        position: relative;
+        float: right;
+        top: 10%;
+        transform: translateY(-50%);
+        .header-button{
+            border-radius: 15px;
+        }        
+    }        
+    @media screen and (max-width: 600px) {
+        margin-left: -40px;
+    }
+  }
 
-.left-menu {
-    position: relative;
-    float: left;
-    top: 10%;
-    margin-left: 20px;
-    transform: translateY(-50%);
-}
-
-.right-nav {
-    position: relative;
-    float: right;
-    top: 10%;
-    transform: translateY(-50%);
-}
 
 .ant-menu {
     background: none;
 }
 
-.header-button{
-    border-radius: 15px;
+.ant-menu-item{
+    padding: 0 10px;
 }
