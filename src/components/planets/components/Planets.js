@@ -1,8 +1,18 @@
-import { Avatar, Card, Descriptions, List, Select } from "antd";
+import { EyeOutlined } from '@ant-design/icons';
+import {
+  Avatar,
+  Button,
+  Card,
+  Descriptions,
+  List,
+  Select,
+  Tooltip,
+} from "antd";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { requestPlanets } from "../actions";
 import { IMAGES } from "../constants";
+import PlanetsModal from "./PlanetsModal";
 
 const { Option } = Select;
 const { Meta } = Card;
@@ -12,8 +22,8 @@ const Planets = () => {
   const dispatch = useDispatch();
 
   const { planets } = useSelector((state) => state.planets);
-
   const [planetsData, setPlanetsData] = useState(((planets.length !== 0) ? planets : []));
+  const [selectedModal, setSelectedModal] = useState(null);
 
   useEffect(() => {
     dispatch(requestPlanets());
@@ -32,6 +42,12 @@ const Planets = () => {
 
   return (
     <div className="card-list">
+      <PlanetsModal
+        selectedModal={selectedModal}
+        onCancel={() => setSelectedModal(null)}
+        data={planets}
+        onOk={() => setSelectedModal(null)}
+      />
       <Select
         showSearch
         className="name-select"
@@ -63,7 +79,19 @@ const Planets = () => {
               hoverable
               cover={<img alt="planets" src={randomImage} />}
             >
-              <Meta avatar={<Avatar src={randomImage} />} title={item.name} />
+              <Meta
+                avatar={<Avatar src={randomImage} />}
+                title={item.name}
+                description={
+                  <Tooltip title="view planet">
+                    <Button
+                      onClick={() => setSelectedModal(item.name)}
+                      type="link"
+                      icon={<EyeOutlined/>}
+                    />
+                  </Tooltip>
+                }
+              />
 
               <Descriptions bordered layout="vertical">
                 <Descriptions.Item label="Population">
