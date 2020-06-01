@@ -2,6 +2,7 @@
 export const PATHS = {
     PLANETS: '/planets',
     PEOPLE: '/people',
+    STARSHIPS: '/starships',
     HOME: '/',
 };
 

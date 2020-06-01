@@ -1,19 +1,20 @@
 import { Avatar, Card, Descriptions, List } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { requestPlanets } from "../actions";
+import { requestStarships } from "../actions";
 import { IMAGES } from "../constants";
 
 const { Meta } = Card;
 let randomImage = IMAGES[Math.floor(Math.random() * IMAGES.length)];
 
-const Planets = () => {
+const Starships = () => {
   const dispatch = useDispatch();
 
-  const { planets } = useSelector((state) => state.planets);
+  const { starships } = useSelector((state) => state.starships);
+  console.log(starships);
 
   useEffect(() => {
-    dispatch(requestPlanets());
+    dispatch(requestStarships());
   }, [dispatch]);
 
   return (
@@ -27,21 +28,21 @@ const Planets = () => {
           },
           pageSize: 2,
         }}
-        dataSource={planets}
+        dataSource={starships}
         renderItem={(item) => (
           <List.Item>
             <Card
               hoverable
-              cover={<img alt="planets" src={randomImage} />}
+              cover={<img alt="starships" src={randomImage} />}
             >
               <Meta avatar={<Avatar src={randomImage} />} title={item.name} />
 
               <Descriptions bordered layout="vertical">
-                <Descriptions.Item label="Population">
-                  {item.population}
+                <Descriptions.Item label="Model">
+                  {item.model}
                 </Descriptions.Item>
-                <Descriptions.Item label="Climate">
-                  {item.climate}
+                <Descriptions.Item label="Cargo Capacity">
+                  {item.cargo_capacity}
                 </Descriptions.Item>
               </Descriptions>
             </Card>
@@ -53,4 +54,4 @@ const Planets = () => {
   );
 };
 
-export default Planets;
+export default Starships;

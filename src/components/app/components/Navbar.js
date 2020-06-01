@@ -41,12 +41,21 @@ const Navbar = () => {
         menuItem("/starships", STARSHIPS, false),
       ];
     }
+
+    return [
+      menuItem("/planets", PLANETS, true),
+      menuItem("/people", PEOPLE, true),
+      menuItem("/starships", STARSHIPS, true),
+    ];
+
   };
 
   return (
     <Header className="main-nav">
       <div className="left-menu">
-        <img src={Logo} width="25%" height="25%" alt="NeoNatar Logo" />
+        <AppLink to={'/'}>
+          <img src={Logo} width="25%" height="25%" alt="NeoNatar Logo" />
+        </AppLink>
       </div>
       <Menu className="right-nav" mode="horizontal">
         {renderMenuItem(location)}
