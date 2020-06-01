@@ -1,0 +1,32 @@
+.main-nav {
+    background: url(../../../assets/hero-banner.jpg) no-repeat center center;
+    background-size: cover;
+    height: 500px;
+}
+
+.left-menu {
+    position: relative;
+    float: left;
+    top: 10%;
+    margin-left: 20px;
+    transform: translateY(-50%);
+}
+
+.right-nav {
+    position: relative;
+    float: right;
+    top: 10%;
+    transform: translateY(-50%);
+}
+
+.ant-menu {
+    background: none;
+}
+
+.header-button{
+    border-radius: 15px;
+}
+
+.name-select{
+    margin: 25px 50px;
+}
