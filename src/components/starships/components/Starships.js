@@ -1,9 +1,10 @@
-import { Avatar, Card, Descriptions, List } from "antd";
-import React, { useEffect } from "react";
+import { Avatar, Card, Descriptions, List, Select } from "antd";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { requestStarships } from "../actions";
 import { IMAGES } from "../constants";
 
+const { Option } = Select;
 const { Meta } = Card;
 let randomImage = IMAGES[Math.floor(Math.random() * IMAGES.length)];
 
@@ -11,14 +12,40 @@ const Starships = () => {
   const dispatch = useDispatch();
 
   const { starships } = useSelector((state) => state.starships);
-  console.log(starships);
+  const [starshipsData, setStarshipsData] = useState(((starships.length !== 0) ? starships : []));
 
   useEffect(() => {
     dispatch(requestStarships());
   }, [dispatch]);
 
+  useEffect(() => {
+    setStarshipsData(starships);
+  }, [starships]);
+
+  const handleChangeStarship = (name) => {
+    if (name) {
+      return setStarshipsData(starships.filter(starship => starship.name === name));
+    }
+    return setStarshipsData(starships);
+  };
+
   return (
-    <div className="card-list">
+    <div>
+      <Select
+        showSearch
+        className="name-select"
+        style={{ width: 200 }}
+        placeholder="Select a starship"
+        optionFilterProp="children"
+        onChange={handleChangeStarship}
+        filterOption={(input, option) =>
+          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        }
+      >
+        {starships.map(item => (
+            <Option value={item.name}>{item.name}</Option>
+        ))}
+      </Select>
       <List
         size="large"
         grid={{ gutter: 12, column: 2, lg: 3, md: 3, sm: 2, xs: 1, xxl: 3 }}
@@ -28,7 +55,7 @@ const Starships = () => {
           },
           pageSize: 2,
         }}
-        dataSource={starships}
+        dataSource={starshipsData}
         renderItem={(item) => (
           <List.Item>
             <Card
