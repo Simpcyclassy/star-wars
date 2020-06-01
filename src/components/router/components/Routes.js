@@ -8,9 +8,10 @@ import { PATHS } from '../constants';
 
 import planets from '../../planets';
 import people from '../../people';
+import starships from '../../starships';
 import app from '../../app';
 
-const { PLANETS,PEOPLE } = PATHS;
+const { PLANETS, PEOPLE, STARSHIPS  } = PATHS;
 const { App } = app.components;
 
 const Routes = () => (
@@ -30,8 +31,12 @@ const Routes = () => (
                         strict
                         component={people.components.People}
                     />
-                    <Route component={NoMatch} />
-
+                    <Route
+                        path={STARSHIPS}
+                        exact
+                        strict
+                        component={starships.components.Starships}
+                    />
                     <Route component={NoMatch} />
                 </Switch>
             </App>

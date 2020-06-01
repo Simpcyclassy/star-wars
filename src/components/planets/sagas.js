@@ -5,7 +5,7 @@ import { REQUEST_PLANETS } from './actionTypes';
 import { allPlanets } from './services';
 
 /**
- * Handles requesting the list of transactions from the database
+ * Handles requesting the list of planets from the database
  *
  * @return {Void} - void
  */

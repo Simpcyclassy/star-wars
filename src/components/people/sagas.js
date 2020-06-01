@@ -5,7 +5,7 @@ import { REQUEST_CHARACTER } from './actionTypes';
 import { allCharacters } from './services';
 
 /**
- * Handles requesting the list of transactions from the database
+ * Handles requesting the list of characters from the database
  *
  * @return {Void} - void
  */
@@ -13,7 +13,6 @@ function* requestAllCharacters() {
     try {
         yield put(loadCharacter());
         const res = yield call(allCharacters);
-        console.log(res);
         if (res) {
             yield put(updateCharacter(res.results));
         } 
@@ -25,7 +24,7 @@ function* requestAllCharacters() {
 /**
  * @function
  * Watches for the {@link actionTypes.REQUEST_PLANETS REQUEST_PLANETS} action.
- * Triggers request to get planetsfrom database
+ * Triggers request to get characters from database
  *
  * @return {void}
  */

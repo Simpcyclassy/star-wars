@@ -32,7 +32,7 @@ const People = () => {
           <List.Item>
             <Card
               hoverable
-              cover={<img alt="planets" src={randomImage} />}
+              cover={<img alt="people" src={randomImage} />}
             >
               <Meta avatar={<Avatar src={randomImage} />} title={item.name} />
 
